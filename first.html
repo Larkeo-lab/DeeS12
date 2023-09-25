@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dee-s1</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="first.css">
+</head>
+
+<body>
+    <div class="ont">
+        <img src="red.png" alt="">
+        <div class="container">
+            <header class="header">
+                <img src="white-logo.png" alt="">
+                <div class="icon">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </header>
+            <div class="wrapper">
+                <svg>
+                    <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                        Dee S1
+                    </text>
+                </svg>
+            </div>
+            <div class="content">
+                <p>เลือกใช้ได้เลยนะครับ</p>
+                <p> iOS / Android</p>
+                <div class="buttons">
+                    <button class="button" id="yt">
+                        <i class="uil uil-youtube"></i>
+                        Subscribe
+                        <div class="custom_loader "></div>
+                    </button>
+                    <button class="button" id="fb">
+                        <i class="uil uil-facebook"></i>
+                        Subscribe
+                        <div class="custom_loader "></div>
+                    </button>
+                    <div class="count">process <p id="number">0</p>/ 2</div>
+                    <button id="btn" class="gray" disabled>Click</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        const yt = document.getElementById('yt')
+        const fb = document.getElementById('fb')
+        const btn = document.getElementById('btn')
+        let number = document.getElementById('number')
+        let loader = document.getElementsByClassName('custom_loader')
+
+
+
+        let count = 0
+
+        yt.addEventListener('click', () => {
+            yt.classList.add('custom_loader1')
+            fb.disabled = true
+            window.open('https://www.youtube.com/channel/UC-bL9MZbFSffHkV1eIkFvqg')
+            setTimeout(() => {
+                yt.classList.remove('custom_loader1')
+                count++;
+                number.innerHTML = count
+                yt.classList.add('click')
+                fb.disabled = false
+                yt.disabled = true
+                buttonClick()
+            }, 10000)
+
+        })
+        fb.addEventListener('click', () => {
+            fb.classList.add('custom_loader1')
+            yt.disabled = true
+            window.open('https://www.facebook.com/profile.php?id=100095388950704&locale=th_TH')
+            setTimeout(() => {
+                fb.classList.remove('custom_loader1')
+                count++;
+                number.innerHTML = count
+                fb.classList.add('click')
+                yt.disabled = false
+                fb.disabled = true
+                buttonClick()
+            }, 10000)
+        })
+
+        function buttonClick() {
+            if (yt.classList.contains('click') &&
+                fb.classList.contains('click'))
+                 {
+                 btn.disabled = false
+                btn.classList.remove('gray')
+                btn.classList.add('green')
+                yt.disabled = true
+                fb.disabled = true
+                btn.addEventListener('click',()=>{
+                    setTimeout(()=>{
+                        window.open('/public/ios_android/ios_android.html')
+                    },2000)
+                })
+            } else {
+                btn.disabled = true
+            }
+        }
+    </script>
+</body>
+
+</html>
